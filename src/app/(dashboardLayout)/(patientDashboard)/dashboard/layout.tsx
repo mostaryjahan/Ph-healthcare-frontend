@@ -1,4 +1,4 @@
-const PatientDashboard = ({children}: {children: React.ReactNode}) => {
+const PatientDashboardLayout = ({children}: {children: React.ReactNode}) => {
   return (
     <div>
      {children}
@@ -6,4 +6,4 @@ const PatientDashboard = ({children}: {children: React.ReactNode}) => {
   );
 };
 
-export default PatientDashboard;
+export default PatientDashboardLayout;

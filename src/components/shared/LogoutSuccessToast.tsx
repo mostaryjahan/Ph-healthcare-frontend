@@ -1,0 +1,23 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { toast } from "sonner";
+
+const LoggedSuccessToast = () => {
+  const searchparams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (searchparams.get("loggedOut") === "true")
+      toast.success("Logged out successfully");
+
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.delete("loggedOut");
+    router.replace(newUrl.toString());
+  }, [searchparams, router]);
+
+  return null;
+};
+
+export default LoggedSuccessToast;

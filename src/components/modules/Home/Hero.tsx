@@ -2,8 +2,9 @@ import { Search, Calendar, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroProps } from "@/types/heroProps";
 import { LargeSparkleIcon, SparkleIcon } from "@/assets/icons/SparkleIcon";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+
 
 
 

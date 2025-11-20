@@ -5,20 +5,18 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 
 const LoginSuccessToast = () => {
-  const searchparams = useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
-    if (searchparams.get("loggedIn") === "true")
-      toast.success("Login Successfully");
+    if (searchParams.get("loggedIn") === "true") {
+      toast.success("You have been logged in successfully.");
 
-    const newURL = new URL(window.location.href);
-    newURL.searchParams.delete("loggedIn");
-    router.replace(newURL.toString());
-
-
-  }, [searchparams, router]);
-
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete("loggedIn");
+      router.replace(newUrl.toString());
+    }
+  }, [searchParams, router]);
   return null;
 };
 

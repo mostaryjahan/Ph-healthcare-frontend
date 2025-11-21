@@ -1,0 +1,78 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { serverFetch } from "@/lib/server-fetch";
+import { zodValidator } from "@/lib/zodValidator";
+import { createSpecialityZodSchema } from "@/zod/specialities.validation";
+
+
+
+
+// create speciality
+export async function createSpeciality(_prevState: any, formData: FormData) {
+  try {
+    const payload = {
+      title: formData.get("title") as string,
+    };
+
+    if(zodValidator(payload, createSpecialityZodSchema).success === false){
+      return  zodValidator(payload, createSpecialityZodSchema);
+    }
+     const validatedPayload = zodValidator(payload, createSpecialityZodSchema);
+
+
+
+    const newFormData = new FormData();
+    newFormData.append("data", JSON.stringify(validatedPayload.data));
+
+    if (formData.get("file")) {
+      newFormData.append("file", formData.get("file") as Blob);
+    }
+
+    const response = await serverFetch.post("/specialties",{
+        body: newFormData,
+    });
+
+    const result = await response.json();
+
+    return result;
+
+  } catch (error: any) {
+    console.log(error);
+    return {
+      success: false,
+      errors: error.message,
+    };
+  }
+}
+
+
+// get all speciality
+export async function getSpeciality() {
+    try {
+        const response = await serverFetch.get("/specialties");
+        const result = await response.json();
+        return result;
+    } catch (error: any) {
+        console.log(error);
+        return {
+            success: false,
+            errors: error.message,
+        };
+    }
+}
+
+
+// delete speciality
+export async function deleteSpeciality(id: string) {
+    try {
+        const response = await serverFetch.delete(`/specialties/${id}`);
+        const result = await response.json();
+        return result;
+    } catch (error: any) {
+        console.log(error);
+        return {
+            success: false,
+            errors: error.message,
+        };
+    }
+}

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
+"use server"
 import { serverFetch } from "@/lib/server-fetch";
 import { zodValidator } from "@/lib/zodValidator";
 import { createSpecialityZodSchema } from "@/zod/specialities.validation";
@@ -47,7 +47,7 @@ export async function createSpeciality(_prevState: any, formData: FormData) {
 
 
 // get all speciality
-export async function getSpeciality() {
+export async function getSpecialities() {
     try {
         const response = await serverFetch.get("/specialties");
         const result = await response.json();

@@ -5,7 +5,8 @@ import { ISpecialty } from "@/types/specialities.interface";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import DoctorFormDialog from "./DoctorFormDIalog";
+import DoctorFormDialog from "./DoctorFormDialog";
+
 
 
 interface DoctorsManagementHeaderProps {

@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { getInitials } from "@/lib/formatters";
+import { formatDateTime, getInitials } from "@/lib/formatters";
 import { IDoctor } from "@/types/doctor.interface";
 import {
   Briefcase,
